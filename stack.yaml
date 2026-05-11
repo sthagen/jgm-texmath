@@ -1,8 +1,0 @@
-flags:
-  texmath:
-    executable: true
-packages:
-- '.'
-extra-deps:
-- typst-symbols-0.1.9.1
-resolver: lts-21.7

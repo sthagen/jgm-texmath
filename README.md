@@ -26,14 +26,6 @@ test program, `texmath`, use the `executable` Cabal flag:
 
 By default, the executable will be installed in `~/.cabal/bin`.
 
-Alternatively, texmath can be installed using
-[stack](https://github.com/commercialhaskell/stack).  Install
-the stack binary somewhere in your path.  Then, in the texmath
-repository,
-
-    stack setup
-    stack install --flag texmath:executable
-
 The `texmath` binary will be put in `~/.local/bin`.
 
 Macro definitions may be included before a LaTeX formula.
@@ -46,7 +38,7 @@ Macro definitions may be included before a LaTeX formula.
 But it is also possible to compile a full webserver with a JSON
 API.  To do this, set the `server` cabal flag, e.g.
 
-    stack install --flag texmath:server
+    cabal install -fserver
 
 To run the server on port 3000:
 
@@ -145,7 +137,7 @@ regenerate the table.
 
 # The test suite
 
-To run the test suite, do `cabal test` or `stack test`.
+To run the test suite, do `cabal test`.
 
 In its standard mode, the test suite will run golden tests of
 the individual readers and writers.  Reader tests can be found
@@ -160,12 +152,12 @@ begins after a line `>>> FORMAT`.
 If many tests fail as a result of changes, but the test
 failures are all because of improvements in the output,
 you can pass `--accept` to the test suite (e.g., with
-`--test-arguments=--accept` on `stack test`), and the existing
+`--test-option=--accept` on `cabal test`), and the existing
 golden files will be overwritten.  If you do this, inspect
 the outputs very carefully to make sure they are correct.
 
 If you pass the `--roundtrip` option into the test suite
-(e.g., using `--test-arguments=--roundtrip` with `stack test`),
+(e.g., using `--test-option=--roundtrip` with `cabal test`),
 round-trip tests will be run instead.  Many of these will
 fail. In these tests, the native inputs in `test/roundtrip/*.native`
 will be converted to (respectively) `mml`, `omml`, or `tex`,
